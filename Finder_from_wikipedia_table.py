@@ -13,10 +13,19 @@ table_df = pd.read_csv('out.csv', delimiter='\t', header=None, names=['names', '
 user_string = input("Please enter a string (maximum 4 words):\n")
 words_to_find = user_string.split()
 
-word1 = words_to_find[0]
-word2 = words_to_find[1]
-word3 = words_to_find[2]
-word4 = words_to_find[3]
+word1 = ''
+word2 = ''
+word3 = ''
+word4 = ''
+
+if len(words_to_find) >= 1:
+    word1 = words_to_find[0]
+    if len(words_to_find) >= 2:
+        word2 = words_to_find[1]
+        if len(words_to_find) >= 3:
+            word3 = words_to_find[2]
+            if len(words_to_find) >= 4:
+                word4 = words_to_find[3]
 
 print('Procesing ... \n')
 
@@ -54,7 +63,7 @@ for index, row in table_df.iterrows():                              # Interact p
 
 max_index = table_df['final_score'].astype(float).idxmax()    
 
-print(f'You entered the words: {words_to_find[0:4]} and the best match is:\n{table_df["names"][max_index]}\nWith a score of: {table_df["final_score"][max_index]}')
+print(f'You entered the words: {[word1, word2, word3, word4]} and the best match is:\n{table_df["names"][max_index]}\nWith a score of: {table_df["final_score"][max_index]}')
 
 
  
